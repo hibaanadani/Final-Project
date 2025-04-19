@@ -18,3 +18,9 @@ body {
     justify-self: center;
     align-items: center;
 }
+header{
+    width: 100%;
+    padding: 10px 0px;
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    display: flex;
+}

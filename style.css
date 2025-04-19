@@ -1,9 +1,20 @@
 body {
-    background-color: #C850C0;
+    background-color: #4c0c48;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100vh; /*changed it to vh to make the quizwrapper centered*/
     margin: 0;
+}
+.quiz-wrapper {
+    background-color: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(233, 246, 243, 0.27);
+    padding: 5px;
+    width: 50%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    justify-self: center;
+    align-items: center;
 }

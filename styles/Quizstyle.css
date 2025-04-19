@@ -28,6 +28,7 @@ header{
     align-items: center;
     border-bottom: 2px solid rgba(0, 0, 0, .1);
     margin-bottom: 10px;
+    font-size: 13px;
 }
 .submit-btn {
     padding: 10px;

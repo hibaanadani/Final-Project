@@ -6,4 +6,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (user) {
         headerText.textContent = `Welcome ${currentUser}! Please Select a quiz`;
     }
+    
 });

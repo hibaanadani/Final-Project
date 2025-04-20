@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Username already exists!");
                 return;
             }
-            if (!email && users.some(user => user.email === email)) {
+            if (!email || users.some(user => user.email === email)) {
                 alert("Email not provided or is already registered!");
                 return;
             }

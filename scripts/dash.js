@@ -1,0 +1,21 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const usersTableBody = document.querySelector("#users-table tbody");
+    const clearDataButton = document.getElementById("clear-data-btn");
+
+    let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
+
+    function populateUserScores() {
+        usersTableBody.innerHTML = "";
+        Object.keys(userScores).forEach(username => {
+            const quizzes = userScores[username];
+            Object.keys(quizzes).forEach(quizName => {
+                const score = quizzes[quizName];
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
+                usersTableBody.appendChild(tr);
+            });
+        });
+    }
+
+    populateUserScores();
+});

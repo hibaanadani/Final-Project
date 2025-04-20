@@ -119,3 +119,4 @@ function calculateScore() {
 
     alert(`Quiz completed! You scored ${score} out of ${Object.keys(userAnswers).length}.`);
 }
+

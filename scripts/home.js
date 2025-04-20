@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentUser= localStorage.getItem("currentUser");
     if (currentUser) {
-        headerText.textContent = `Welcome ${currentUser}! Please Select a quiz`;
+        headerText.textContent = `Welcome ${currentUser}! Please Select a Quiz`;
     }
     let quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
     if (quizzes.length === 0) {

@@ -30,3 +30,22 @@ header{
     margin-bottom: 10px;
     font-size: 13px;
 }
+.quiz-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+.quiz-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.quiz-list li:hover {
+    background-color: #440340;
+}

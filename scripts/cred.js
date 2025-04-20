@@ -22,6 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
         const email = isRegister ? emailField.value.trim() : null;
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        if (isRegister) {
+            if (users.some(user => user.username === username)) {
+                alert("Username already exists!");
+                return;
+            }
+            
+        }
     });
 
 });

@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Username already exists!");
                 return;
             }
-            if (users.some(user => user.email === email)) {
-                alert("Email is already registered!");
+            if (!email && users.some(user => user.email === email)) {
+                alert("Email not provided or is already registered!");
                 return;
             }
             users.push({ username, email, password });
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (username === "admin" && password === "admin123") {
                     window.location.href = "dashboard.html";
                 } else {
+                    localStorage.setItem("currentUser", user.username);
                     alert("Login successful! Welcome, " + user.username);
                     window.location.href = "home.html";
                 }

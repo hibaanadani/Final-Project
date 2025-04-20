@@ -32,13 +32,14 @@ header{
 .question-section {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    justify-content: space-evenly;
+
 }
 @media screen and (max-width: 600px) {
     .question-section {
         flex-direction: column;
     }
-    
+   
 }
 .question-section button {
     display: block;
@@ -50,6 +51,10 @@ header{
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     cursor: pointer;
+    flex-grow: 1;
+    max-width: 200px;
+    min-width: 100px;
+
 }
 .submit-btn{
     color: #4c0c48;

@@ -4,15 +4,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /*changed it to vh to make the quizwrapper centered*/
+    height: 100vh;
     margin: 0;
 }
 .quiz-wrapper {
     background-color: rgba(255, 255, 255, 0.28);
     border: 1px solid rgba(233, 246, 243, 0.27);
     padding: 5px;
-    width: 50%;
-    max-width: 400px;
+    width: 90%;
     text-align: center;
     border-radius: 10px;
     display: flex;
@@ -30,15 +29,47 @@ header{
     margin-bottom: 10px;
     font-size: 13px;
 }
-.submit-btn {
-    padding: 10px;
+.question-section {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+@media screen and (max-width: 600px) {
+    .question-section {
+        flex-direction: column;
+    }
+    
+}
+.question-section button {
+    display: block;
+    width: 90%;       
+    margin: 10px auto; 
+    padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
-    text-align: center;
+    cursor: pointer;
 }
+.submit-btn{
+    color: #4c0c48;
+    font-weight: bolder;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.question-section button:hover,
 .submit-btn:hover {
     background-color: #440340;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.submit-btn:hover {
+    color: white;
+}
+.score-display {
+    margin-top: 10px;
+    font-size: 13px;
+    color: white;
 }

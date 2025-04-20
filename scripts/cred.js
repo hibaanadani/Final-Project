@@ -17,4 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
             : `Don't have an account? <span>Register</span>`;
     });
 
+
 });

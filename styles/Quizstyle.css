@@ -4,8 +4,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 80%;
+    overflow: auto;
 }
 .quiz-wrapper {
     background-color: rgba(255, 255, 255, 0.28);
@@ -19,27 +19,17 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 header{
     width: 100%;
-    padding: 5px 10px;
+    padding:5px;
+    min-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid rgba(0, 0, 0, .1);
     margin-bottom: 10px;
     font-size: 13px;
-}
-.question-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
-}
-@media screen and (max-width: 600px) {
-    .question-section {
-        flex-direction: column;
-    }
-   
 }
 .question-section button {
     display: block;

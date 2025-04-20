@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const usersTableBody = document.querySelector("#users-table tbody");
     const clearDataButton = document.getElementById("clear-data-btn");
+    const selectedQuiz = localStorage.getItem("selectedQuiz");
 
     let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
 
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Object.keys(quizzes).forEach(quizName => {
                 const score = quizzes[quizName];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
+                tr.innerHTML = `<td>${username}</td><td>${selectedQuiz}</td><td>${score}</td>`;
                 usersTableBody.appendChild(tr);
             });
         });

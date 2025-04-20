@@ -10,7 +10,7 @@ body {
 .dashboard-wrapper {
     background-color: rgba(255, 255, 255, 0.28);
     border: 1px solid rgba(233, 246, 243, 0.27);
-    padding: 5px;
+    padding: 10px;
     width: 50%;
     max-width: 400px;
     text-align: center;
@@ -20,13 +20,52 @@ body {
     justify-content: center;
     align-items: center;
 }
-header{
+
+.dashboard-header {
     width: 100%;
     padding: 5px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.users-list h2 {
+    font-size: 16px;
+    color: white;
     margin-bottom: 10px;
-    font-size: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+table thead {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 12px;
+}
+
+.admin-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: #4c0c48;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.admin-btn:hover {
+    background-color: #440340;
+    color: white;
 }

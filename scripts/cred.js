@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Email is already registered!");
                 return;
             }
-        
+            users.push({ username, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Registration successful! Welcome.");
+            window.location.href = "home.html";
         }
     });
 

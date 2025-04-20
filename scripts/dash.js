@@ -21,11 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     populateUserScores();
 
     clearDataButton.addEventListener("click", () => {
-        if (confirm("Are you sure you want to clear all local data?")) {
-            localStorage.clear;
-            userScores = {};
-            populateUserScores();
-            alert("Local data has been cleared!");
+        if (confirm("Are you sure you want to DELETE ALL local data? This includes authentication, quizzes, and user progress.")) {
+            localStorage.clear();
+            alert("All local data has been cleared!");
+            location.reload();
         }
     });
 });

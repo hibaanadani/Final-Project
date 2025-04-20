@@ -36,7 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("users", JSON.stringify(users));
             alert("Registration successful! Welcome.");
             window.location.href = "home.html";
+        } else {
+            const user = users.find(user => user.username === username && user.password === password);
+            if (user) {
+                if (username === "admin") {
+                    window.location.href = "dashboard.html";
+                } else {
+                    alert("Login successful! Welcome, " + user.username);
+                    window.location.href = "home.html";
+                }
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
         }
     });
-
 });

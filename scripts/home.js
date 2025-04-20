@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
         headerText.textContent = `Welcome ${currentUser}! Please Select a quiz`;
     }
     let quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
+    if (quizzes.length === 0) {
+        quizList.innerHTML = "<p>No quizzes available. Please add some!</p>";
+        return;
+    }
     quizzes.forEach(quiz => {
         let listItem = document.createElement("li");
         listItem.textContent = quiz.name;

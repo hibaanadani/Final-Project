@@ -18,4 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     populateUserScores();
+
+    clearDataButton.addEventListener("click", () => {
+        if (confirm("Are you sure you want to clear all local data?")) {
+            localStorage.clear;
+            userScores = {};
+            populateUserScores();
+            alert("Local data has been cleared!");
+        }
+    });
 });

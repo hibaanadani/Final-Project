@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             const user = users.find(user => user.username === username && user.password === password);
             if (user) {
-                if (username === "admin") {
+                if (username === "admin" && password === "admin123") {
                     window.location.href = "dashboard.html";
                 } else {
                     alert("Login successful! Welcome, " + user.username);

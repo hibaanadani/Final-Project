@@ -1,10 +1,13 @@
 let selectedQuiz;
 let userAnswers = {};
+
 document.addEventListener("DOMContentLoaded", () => {
-    const selectedQuiz = localStorage.getItem("selectedQuiz");
+    selectedQuiz = localStorage.getItem("selectedQuiz");
     const questionContainer = document.getElementById("question-container");
     const submitButton = document.getElementById("submit-btn");
     const headerText = document.getElementById("header-txt");
+    const nextQuizButton = document.getElementById("next-quiz-btn");
+    const logoutButton = document.getElementById("logout-btn");
 
     if (!selectedQuiz) {
         questionContainer.innerHTML = "<p>No quiz selected. Please go back and choose one.</p>";
@@ -25,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Movies & TV Shows": [
                 { question: "Which movie features the quote 'May the Force be with you'?", options: ["Star Wars", "The Matrix", "Interstellar"], answer: "Star Wars" },
                 { question: "What is the name of Ross Geller’s second wife?", options: ["Janice", "Rachel", "Emily"], answer: "Emily" },
-                { question: "What is the highest-grossing movie of all time?", options: ["Avengers: Endgame","Avatar" , "Titanic"], answer: "Avatar" }
+                { question: "What is the highest-grossing movie of all time?", options: ["Avengers: Endgame", "Avatar", "Titanic"], answer: "Avatar" }
             ],
             "Music & Pop Culture": [
                 { question: "Which artist is known as the 'King of Pop'?", options: ["Michael Jackson", "Elvis Presley", "Prince"], answer: "Michael Jackson" },
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 { question: "Which band recorded the song 'Bohemian Rhapsody'?", options: ["The Beatles", "Queen", "The Rolling Stones"], answer: "Queen" }
             ],
             "Books & Literature": [
-                { question: "Who wrote 'Pride and Prejudice'?", options: ["Charlotte Brontë", "Jane Austen" , "Emily Dickinson"], answer: "Jane Austen" },
+                { question: "Who wrote 'Pride and Prejudice'?", options: ["Charlotte Brontë", "Jane Austen", "Emily Dickinson"], answer: "Jane Austen" },
                 { question: "What is the name of the witcher Geralt of Rivia's trusted horse?", options: ["Roach", "Shadowfax", "Storm"], answer: "Roach" },
                 { question: "Who is the author of the Harry Potter series?", options: ["J.K. Rowling", "J.R.R. Tolkien", "George R.R. Martin"], answer: "J.K. Rowling" }
             ],
@@ -50,12 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "Sports & Games": [
                 { question: "Which country won the first-ever FIFA World Cup?", options: ["Brazil", "Uruguay", "Germany"], answer: "Uruguay" },
                 { question: "How many players are on a standard soccer team?", options: ["11", "9", "15"], answer: "11" },
-                { question: "Which game features a king, queen, rook, bishop, knight, and pawn?", options: ["Checkers", "Go","Chess"], answer: "Chess" }
+                { question: "Which game features a king, queen, rook, bishop, knight, and pawn?", options: ["Checkers", "Go", "Chess"], answer: "Chess" }
             ],
             "Food & Drink": [
                 { question: "What is the main ingredient in guacamole?", options: ["Avocado", "Tomato", "Lettuce"], answer: "Avocado" },
                 { question: "Which country is known for sushi?", options: ["Japan", "China", "Thailand"], answer: "Japan" },
-                { question: "Which type of pasta is shaped like a small rice grain?", options: ["Penne","Orzo", "Spaghetti"], answer: "Orzo" }
+                { question: "Which type of pasta is shaped like a small rice grain?", options: ["Penne", "Orzo", "Spaghetti"], answer: "Orzo" }
             ]
         };
         localStorage.setItem("quizzesData", JSON.stringify(quizzesData));
@@ -69,7 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     displayQuestions(questions);
-    submitButton.addEventListener("click", calculateScore); 
+    submitButton.addEventListener("click", calculateScore);
+
+    nextQuizButton.addEventListener("click", () => {
+        window.location.href = "home.html";
+    });
+
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("currentUser");
+        window.location.href = "credentials.html";
+    });
 });
 
 function displayQuestions(questions) {
@@ -90,12 +102,20 @@ function displayQuestions(questions) {
         questionContainer.appendChild(questionBlock);
     });
 }
+
 function selectAnswer(index, selectedOption, correctAnswer, btn) {
     userAnswers[index] = { selectedOption, correctAnswer };
 
-    
     let buttons = btn.parentElement.querySelectorAll("button");
-    btn.style.backgroundColor = "#440340";
+    buttons.forEach(button => {
+        button.disabled = true;  
+        button.style.opacity = 0.6;
+        if (button.textContent === correctAnswer) {
+            button.style.backgroundColor = "green";
+        } else if (button === btn) {
+            button.style.backgroundColor = "red";
+        }
+    });
 }
 
 function calculateScore() {

@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             const user = users.find(user => user.username === username && user.password === password);
             if (user) {
+                localStorage.setItem("currentUser", user.username);
+                alert("Login successful! Welcome, " + user.username);
                 if (username === "admin" && password === "admin123") {
                     window.location.href = "dashboard.html";
                 } else {
-                    localStorage.setItem("currentUser", user.username);
-                    alert("Login successful! Welcome, " + user.username);
                     window.location.href = "home.html";
                 }
             } else {

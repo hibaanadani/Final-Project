@@ -34,8 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             users.push({ username, email, password });
             localStorage.setItem("users", JSON.stringify(users));
-            alert("Registration successful! Welcome.");
-            window.location.href = "home.html";
+            if (username === "admin" && password === "admin123") { // Admin register redirect
+                window.location.href = "dashboard.html";
+            } else {
+                window.location.href = "home.html";
+            }
         } else {
             const user = users.find(user => user.username === username && user.password === password);
             if (user) {

@@ -46,7 +46,7 @@ header{
     min-width: 100px;
 
 }
-.submit-btn{
+.submit-btn, .next-quiz-btn {
     color: #4c0c48;
     font-weight: bolder;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -57,10 +57,10 @@ header{
     font-size: 15px;
 }
 .question-section button:hover,
-.submit-btn:hover {
+.submit-btn:hover, .next-quiz-btn:hover{
     background-color: #440340;
 }
-.submit-btn:hover {
+.submit-btn:hover, .next-quiz-btn:hover {
     color: white;
 }
 .score-display {

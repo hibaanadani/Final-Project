@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedQuiz = localStorage.getItem("selectedQuiz");
     const questionContainer = document.getElementById("question-container");
     const submitButton = document.getElementById("submit-btn");
-    const scoreDisplay = document.getElementById("score");
     const headerText = document.getElementById("header-txt");
 
     if (!selectedQuiz) {
@@ -109,6 +108,7 @@ function calculateScore() {
 
     let currentUser = localStorage.getItem("currentUser") || "Guest";
     let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
+    let selectedQuiz = localStorage.getItem("selectedQuiz");
 
     if (!userScores[currentUser]) userScores[currentUser] = {};
     userScores[currentUser][selectedQuiz] = score;
@@ -119,4 +119,3 @@ function calculateScore() {
 
     alert(`Quiz completed! You scored ${score} out of ${Object.keys(userAnswers).length}.`);
 }
-

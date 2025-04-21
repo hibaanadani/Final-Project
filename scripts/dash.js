@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const usersTableBody = document.querySelector("#users-table tbody");
     const clearDataButton = document.getElementById("clear-data-btn");
-   
+    const returnLoginButton = document.getElementById("return-login-btn");
   
     function populateUserScores() {
     usersTableBody.innerHTML = "";
@@ -44,4 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "credentials.html";
     }
     });
+    returnLoginButton.addEventListener("click", () => {
+        window.location.href = "credentials.html";
+        });
    });

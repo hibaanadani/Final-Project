@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             users.push(newUser);
             localStorage.setItem("users", JSON.stringify(users));
             alert("Registration successful! Welcome.");
-            localStorage.setItem("currentUser", username); // Set currentUser on registration
+            localStorage.setItem("currentUser", username);
             console.log("cred.js: User", username, "registered, currentUser set to:", localStorage.getItem("currentUser"));
             if (username === "admin" && password === "admin123") {
                 window.location.href = "dashboard.html";

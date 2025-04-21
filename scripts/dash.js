@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     });
     returnLoginButton.addEventListener("click", () => {
+        localStorage.removeItem("currentUser");
         window.location.href = "credentials.html";
         });
    });

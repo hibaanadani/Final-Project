@@ -1,51 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
     const usersTableBody = document.querySelector("#users-table tbody");
     const clearDataButton = document.getElementById("clear-data-btn");
-    const selectedQuiz = localStorage.getItem("selectedQuiz");
-
-    console.log(JSON.parse(localStorage.getItem("userScores")));
-    let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
-
+   
+  
     function populateUserScores() {
-        usersTableBody.innerHTML = "";
-        try {
-            let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
-    
-            Object.keys(userScores).forEach(username => {
-                if (username) {
-                    const quizzes = userScores[username];
-                    if (quizzes) {
-                        Object.keys(quizzes).forEach(quizName => {
-                            if (quizName) {
-                                const scores = quizzes[quizName];
-                                if (Array.isArray(scores)) {
-                                    scores.forEach(score => {
-                                        const tr = document.createElement("tr");
-                                        tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
-                                        usersTableBody.appendChild(tr);
-                                    });
-                                } else if (scores !== undefined && scores !== null) {
-                                    const tr = document.createElement("tr");
-                                    tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${scores}</td>`;
-                                    usersTableBody.appendChild(tr);
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        } catch (error) {
-            console.error("Error in populateUserScores:", error);
-        }
-    }
-    populateUserScores();
-
-    clearDataButton.addEventListener("click", () => {
-        if (confirm("Are you sure you want to DELETE ALL local data? This includes authentication, quizzes, and user progress.")) {
-            localStorage.clear();
-            alert("All local data has been cleared!");
-            location.reload();
-            window.location.href = "credentials.html";
-        }
+    usersTableBody.innerHTML = "";
+    try {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+   
+  
+    users.forEach(user => {
+    const username = user.username;
+    const scores = user.scores;
+   
+  
+    if (scores && Object.keys(scores).length > 0) {
+    Object.keys(scores).forEach(quizName => {
+    const score = scores[quizName];
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
+    usersTableBody.appendChild(tr);
     });
-});
+    } else {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${username}</td><td>No quizzes taken</td><td>-</td>`;
+    usersTableBody.appendChild(tr);
+    }
+    });
+    } catch (error) {
+    console.error("Error in populateUserScores:", error);
+    }
+    }
+   
+  
+    populateUserScores();
+   
+  
+    clearDataButton.addEventListener("click", () => {
+    if (confirm("Are you sure you want to DELETE ALL local data? This includes authentication, quizzes, and user progress.")) {
+    localStorage.clear();
+    alert("All local data has been cleared!");
+    location.reload();
+    window.location.href = "credentials.html";
+    }
+    });
+   });

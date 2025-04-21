@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearDataButton = document.getElementById("clear-data-btn");
     const selectedQuiz = localStorage.getItem("selectedQuiz");
 
+    if (currentUser !== "admin") {
+        alert("Access denied. Only admins can access this page.");
+        window.location.href = "credentials.html";
+        return;
+    }
+
     let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
 
     function populateUserScores() {

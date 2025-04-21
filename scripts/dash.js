@@ -13,27 +13,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function populateUserScores() {
         usersTableBody.innerHTML = "";
-        Object.keys(userScores).forEach(username => {
-            const quizzes = userScores[username];
-            if (quizzes) {
-                Object.keys(quizzes).forEach(quizName => {
-                    if (quizName) { 
-                        const scores = quizzes[quizName];
-                        if (Array.isArray(scores)) {
-                            scores.forEach(score => {
-                                const tr = document.createElement("tr");
-                                tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
-                                usersTableBody.appendChild(tr);
-                            });
-                        } else if (scores) {
-                            const tr = document.createElement("tr");
-                            tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${scores}</td>`;
-                            usersTableBody.appendChild(tr);
-                        }
+        try {
+            let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
+    
+            Object.keys(userScores).forEach(username => {
+                if (username) {
+                    const quizzes = userScores[username];
+                    if (quizzes) {
+                        Object.keys(quizzes).forEach(quizName => {
+                            if (quizName) {
+                                const scores = quizzes[quizName];
+                                if (Array.isArray(scores)) {
+                                    scores.forEach(score => {
+                                        const tr = document.createElement("tr");
+                                        tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${score}</td>`;
+                                        usersTableBody.appendChild(tr);
+                                    });
+                                } else if (scores !== undefined && scores !== null) {
+                                    const tr = document.createElement("tr");
+                                    tr.innerHTML = `<td>${username}</td><td>${quizName}</td><td>${scores}</td>`;
+                                    usersTableBody.appendChild(tr);
+                                }
+                            }
+                        });
                     }
-                });
-            }
-        });
+                }
+            });
+        } catch (error) {
+            console.error("Error in populateUserScores:", error);
+        }
     }
     populateUserScores();
 

@@ -3,13 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearDataButton = document.getElementById("clear-data-btn");
     const selectedQuiz = localStorage.getItem("selectedQuiz");
 
-    // const currentUser = localStorage.getItem("currentUser");
-    //     if (currentUser !== "admin") {
-    //         alert("Access denied. Only admins can access this page.");
-    //         window.location.href = "credentials.html";
-    //         return; //  <--- return only for non-admins
-    //     }
-
     console.log(JSON.parse(localStorage.getItem("userScores")));
     let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
 
@@ -52,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.clear();
             alert("All local data has been cleared!");
             location.reload();
+            window.location.href = "credentials.html";
         }
     });
 });
